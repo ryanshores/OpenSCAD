@@ -1,7 +1,7 @@
 import subprocess
 
 free_cad_cmd = '/Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd'
-generate_script = '../scripts/generate-exports.py'
+generate_script = '../scripts/generate-exports-v1.py'
 
 def main():
     subprocess.run(
