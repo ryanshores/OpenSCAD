@@ -120,42 +120,6 @@ class GenerateExports:
         finally:
             logger.info("finished csg")
 
-    def validate_csg(self) -> Mesh:
-        try:
-            logger.debug("validating csg")
-            if not os.path.exists(self.csg_file):
-                logger.debug("csg not generated... creating")
-                self.generate_csg()
-            if not os.path.exists(self.csg_file):
-                raise Exception("csg not generated")
-        except Exception as e:
-            logger.error("failed csg import %s", e)
-            raise e
-
-    def import_csg_mesh(self) -> Mesh:
-        try:
-            logger.debug("importing csg mesh")
-            self.validate_csg()
-
-            shape = Mesh.Mesh(self.csg_file)
-            logger.debug("created shape")
-            return shape
-        except Exception as e:
-            logger.error("failed csg mesh import %s", e)
-            raise e
-
-    def import_csg_part(self) -> Part:
-        try:
-            logger.debug("importing csg part")
-            self.validate_csg()
-
-            shape = Part.read(self.csg_file)
-            logger.debug("created shape")
-            return shape
-        except Exception as e:
-            logger.error("failed csg part import %s", e)
-            raise e
-
     def handle_dry_run(self):
         """
         Handles the dry run by deleting the generated files if dry_run is True.
