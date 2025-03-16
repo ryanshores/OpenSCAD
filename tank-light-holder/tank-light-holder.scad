@@ -72,6 +72,6 @@ tank_y= 88;
 tank_z = 10.5;
 tank_dims = [tank_x, tank_y, tank_z];
 
-wall_thickness = 2;
+wall_thickness = 2.5;
 
 tank_light_holder(light_dims, tank_dims, wall_thickness);
