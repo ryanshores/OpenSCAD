@@ -24,7 +24,6 @@ module tank2(light_dims=light_dims, tank_dims=tank_dims, wall_thickness=wall_thi
         size2=[tank_dims[0],tank_dims[1]],
         h=tank_dims[2],
         align=V_UP+V_BACK+V_RIGHT);
-
 }
 
 module light(light_dims=light_dims, tank_dims=tank_dims) {
@@ -61,17 +60,16 @@ module tank_light_holder(light_dims=light_dims, tank_dims=tank_dims, wall_thickn
         translate([-cut_x, 0, -tank_z*2]) tank(light_dims, tank_dims);
 
     }
-
 }
 
-light_x = 206;
+light_x = 205;
 light_y = 30;
 light_z = 15.5;
 light_dims = [light_x, light_y, light_z];
 
-tank_x = 125;
+tank_x = 153;
 tank_y= 88;
-tank_z = 10;
+tank_z = 10.5;
 tank_dims = [tank_x, tank_y, tank_z];
 
 wall_thickness = 2;
