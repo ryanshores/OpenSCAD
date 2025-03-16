@@ -13,14 +13,28 @@ module tank(light_dims=light_dims, tank_dims=tank_dims) {
             box(tank_dims);
 }
 
+module tank2(light_dims=light_dims, tank_dims=tank_dims, wall_thickness=wall_thickness) {
+    tank_offset_x = light_dims[0]/2 - tank_dims[0]/2;
+    tank_offset_y = light_dims[1]/2 -  tank_dims[1]/2;
+
+    color("green")
+    translate([tank_offset_x, tank_offset_y, light_dims[2]])
+   prismoid(
+        size1=[tank_dims[0]+wall_thickness, tank_dims[1]],
+        size2=[tank_dims[0],tank_dims[1]],
+        h=tank_dims[2],
+        align=V_UP+V_BACK+V_RIGHT);
+
+}
+
 module light(light_dims=light_dims, tank_dims=tank_dims) {
     color("red")
         box(light_dims);
 }
 
 module tank_light(light_dims=light_dims, tank_dims=tank_dims) {
-    tank();
-    light();
+    tank2(light_dims, tank_dims);
+    light(light_dims, tank_dims);
 }
 
 module tank_light_holder(light_dims=light_dims, tank_dims=tank_dims, wall_thickness=wall_thickness) {
@@ -61,4 +75,5 @@ tank_z = 10;
 tank_dims = [tank_x, tank_y, tank_z];
 
 wall_thickness = 2;
+
 tank_light_holder(light_dims, tank_dims, wall_thickness);
