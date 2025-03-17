@@ -6,7 +6,7 @@ class Logger(logging.Logger):
         super().__init__(name, LOG_LEVEL)
         ch = logging.StreamHandler()
         ch.setLevel(logging.DEBUG)
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s.%(funcName)s - %(levelname)s - %(message)s')
         ch.setFormatter(formatter)
         self.addHandler(ch)
 
