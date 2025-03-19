@@ -5,7 +5,6 @@ import re
 from model.PartType import PartType
 from utility.logs import Logger
 from helper import openscad
-from helper.freecad import freecad
 
 logger = Logger(__name__)
 
@@ -16,9 +15,10 @@ class Part():
         self.scad_file_path = os.path.join(self.directory, f"{self.name}.scad")
         self.version = self.validate_get_version()
         self.version_name = f'{self.name}#{self.version}'
-        self.stl_file_path = os.path.join(self.directory, f"{self.version_name}.stl")
-        self.cdg_file_path = os.path.join(self.directory, f"{self.version_name}.csg")
-        self.step_file_path = os.path.join(self.directory, f"{self.version_name}.step")
+        self.png_file_path = os.path.join(self.directory, f"{self.name}.{PartType.PNG.value}")
+        self.stl_file_path = os.path.join(self.directory, f"{self.version_name}.{PartType.STL.value}")
+        self.csg_file_path = os.path.join(self.directory, f"{self.version_name}.{PartType.CSG.value}")
+        self.step_file_path = os.path.join(self.directory, f"{self.version_name}.{PartType.STEP.value}")
         logger.info(self.version_name)
 
     def validate_get_version(self) -> int:
@@ -41,12 +41,9 @@ class Part():
 
         # get the highest number
         return (max(numbers) if numbers else 0) + 1
+
+    def create_png(self): openscad.export(self, PartType.PNG)
         
     def create_stl(self): openscad.export(self, PartType.STL)
 
     def create_csg(self): openscad.export(self, PartType.CSG)
-
-    def create_step(self): 
-        logger.debug(self.step_file_path)
-        freecad(self).export_step(PartType.STEP)
-        logger.info(self.step_file_path)

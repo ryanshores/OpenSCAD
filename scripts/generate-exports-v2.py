@@ -49,7 +49,9 @@ class GenerateExports:
         """
         try:
             logger.info("generating exports for %s", self.part.name)
-            self.part.create_step()
+            self.part.create_png()
+            self.part.create_stl()
+            self.part.create_csg()
         except Exception as e:
             logger.error("an error occurred: %s", e)
             exit(1)
@@ -63,9 +65,9 @@ class GenerateExports:
         """
         if not self.dry_run: return
         logger.debug("starting dry run clean up")
-        if os.path.exists(self.stl_file): os.remove(self.stl_file)
-        if os.path.exists(self.csg_file): os.remove(self.csg_file)
-        if os.path.exists(self.step_file): os.remove(self.step_file)
+        if os.path.exists(self.part.stl_file_path): os.remove(self.part.stl_file_path)
+        if os.path.exists(self.part.csg_file_path): os.remove(self.part.csg_file_path)
+        if os.path.exists(self.part.step_file_path): os.remove(self.part.step_file_path)
         logger.info("finished dry run clean up")
 
 task = GenerateExports()

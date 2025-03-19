@@ -1,7 +1,8 @@
 import enum
 
 class PartType(enum.Enum):
-    SCAD = 1
-    STL = 2
-    CSG = 3
-    STEP = 4
+    SCAD = 'scad'
+    STL = 'stl'
+    CSG = 'csg'
+    STEP = 'step'
+    PNG = 'png'

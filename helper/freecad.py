@@ -1,5 +1,6 @@
 import FreeCAD
 import Part
+import importCSG  # OpenSCAD import module in FreeCAD
 
 from model import Part as PartModel
 from model.PartType import PartType
@@ -9,7 +10,9 @@ logger = logs.Logger(__name__)
 
 def export_step(part: PartModel): Part.export([part], part.step_file_path)
     
-    
+### Not working on arm arch, abandoning for now
+# importCSG relies on PySide2 which is not compiled for arm
+# plan to recompile freecad if needed
 class freecad:
     def __init__(self, part: PartModel):
         self.part = part
@@ -38,13 +41,16 @@ class freecad:
         """
         try:
             logger.debug(self.part.scad_file_path)
+
+            # Import the .scad file
+            importCSG.insert(self.part.scad_file_path, self.document_name)
             
-            # Import the CSG file
-            shape = Part.read(self.part.scad_file_path)
-        
-            # Add the shape to the document
-            part = self.document.addObject("Part::Feature", "Shape")
-            part.Shape = shape
+            # # Import the CSG file
+            # shape = Part.read(self.part.scad_file_path)
+            # 
+            # # Add the shape to the document
+            # part = self.document.addObject("Part::Feature", "Shape")
+            # part.Shape = shape
         
             # Recompute the document to apply changes
             self.document.recompute() 
