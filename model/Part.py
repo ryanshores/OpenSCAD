@@ -10,7 +10,6 @@ from helper.freecad import freecad
 logger = Logger(__name__)
 
 VERSION_LABEL = 'v'
-DRAFT_VERSION_LABEL = 'draft'
 
 class Part():
     def __init__(self, directory: str, dry_run: bool):
@@ -19,8 +18,7 @@ class Part():
         self.name = os.path.basename(directory)
         self.scad_file_path = os.path.join(self.directory, f"{self.name}.{PartType.SCAD.value}")
         self.validate()
-        self.output_dir = self.get_output()
-        self.clear_output()
+        if not self.dry_run: self.output_dir = self.get_output()
         logger.info(self.name)
 
     def validate(self):
@@ -32,26 +30,23 @@ class Part():
 
     def get_output(self) -> str:
         """
-        Determines the output folder to use, v# or draft
+        Determines the output folder.
         """
 
-        if self.dry_run:
-            output_folder = DRAFT_VERSION_LABEL
-        else:
-            # get version folders
-            versions = glob.glob(pathname=os.path.join(self.directory, f"{VERSION_LABEL}*"))
+        # get version folders
+        versions = glob.glob(pathname=os.path.join(self.directory, f"{VERSION_LABEL}*"))
 
-            # extract numbers from stl_files
-            pattern = rf'{VERSION_LABEL}(\d+)$'
-            numbers = [int(re.search(pattern, file).group(1))
-                       for file in versions if re.search(pattern, file)]
+        # extract numbers from stl_files
+        pattern = rf'{VERSION_LABEL}(\d+)$'
+        numbers = [int(re.search(pattern, file).group(1))
+                   for file in versions if re.search(pattern, file)]
 
-            # get the highest number
-            version = (max(numbers) if numbers else 0) + 1
+        # get the highest number
+        version = (max(numbers) if numbers else 0) + 1
 
-            output_folder = f'{VERSION_LABEL}{version}'
+        output_folder = f'{VERSION_LABEL}{version}'
 
-        os.makedirs(output_folder, exist_ok=output_folder==DRAFT_VERSION_LABEL)
+        os.makedirs(output_folder, exist_ok=False)
 
         return output_folder
 
@@ -67,6 +62,13 @@ class Part():
     def get_file_path(self, type: PartType) -> str:
         if type == PartType.PNG: return os.path.join(self.directory, f"{self.name}.{PartType.PNG.value}")
         return os.path.join(self.output_dir, f"{self.name}.{type.value}")
+
+    def run(self):
+        self.create_png()
+        if not self.dry_run:
+            self.create_stl()
+            self.create_csg()
+            self.create_step()
 
     def create_png(self): openscad.export(self, PartType.PNG)
 
