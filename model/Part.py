@@ -65,6 +65,7 @@ class Part():
                 os.remove(file)
 
     def get_file_path(self, type: PartType) -> str:
+        if type == PartType.PNG: return os.path.join(self.directory, f"{self.name}.{PartType.PNG.value}")
         return os.path.join(self.output_dir, f"{self.name}.{type.value}")
 
     def create_png(self): openscad.export(self, PartType.PNG)
