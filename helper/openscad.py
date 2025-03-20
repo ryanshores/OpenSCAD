@@ -7,28 +7,22 @@ from utility import logs
 # Configure logging
 logger = logs.Logger(__name__)
 
+SUPPORTED_EXTENSIONS = [PartType.PNG, PartType.STL, PartType.CSG]
+
 def export(part: Part, part_type: PartType):
     """
     Generates the STL file using OpenSCAD.
     """
-    export_map = {
-        PartType.STL: part.stl_file_path,
-        PartType.CSG: part.csg_file_path,
-        PartType.PNG: part.png_file_path
-    }
-    
-    if part_type not in export_map:
+    if part_type not in SUPPORTED_EXTENSIONS:
         raise Exception("invalid export type")
-    
-    try:
-        # Run the OpenSCAD command to generate the STL file
-        logger.debug("generating %s", part_type)
 
-        file_path = export_map[part_type]
+    try:
+        logger.debug("%s.%s", part.name, part_type.value)
+
+        file_path = part.get_file_path(part_type)
 
         subprocess.run(['openscad', '-o', file_path, part.scad_file_path], check=True)
-        logger.debug("created %s", file_path)
+
+        logger.info(file_path)
     except Exception as e:
-        logger.error("%s error: %s", part_type, e)
-    finally:
-        logger.info("finished %s", part_type)
+        logger.error(e)

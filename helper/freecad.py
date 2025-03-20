@@ -1,4 +1,5 @@
-import FreeCAD
+import os
+import FreeCAD # do not remove
 import Part
 import importCSG  # OpenSCAD import module in FreeCAD
 
@@ -8,71 +9,54 @@ from utility import logs
 
 logger = logs.Logger(__name__)
 
-def export_step(part: PartModel): Part.export([part], part.step_file_path)
-    
-### Not working on arm arch, abandoning for now
-# importCSG relies on PySide2 which is not compiled for arm
-# plan to recompile freecad if needed
 class freecad:
     def __init__(self, part: PartModel):
         self.part = part
         self.document_name = self.part.name
-        self.document = self.initialize_document()
-        self.part = self.initialize_part()
-        logger.info(part.name)
-        
-    def initialize_document(self) -> FreeCAD.Document:
+        self.document = self.open_document()
+        logger.info(self.document_name)
+
+    def open_document(self):
         """
-        Initializes the FreeCAD document.
+        Loads the csg part using OpenSCAD.
         """
         try:
-            logger.debug(self.document_name)
-            # Create a new FreeCAD document
-            return FreeCAD.newDocument(self.document_name)
-        except Exception as e:
-            logger.error(e)
-            raise Exception("failed to initialize document")
-        finally:
-            logger.info(self.document_name)
+            logger.debug(self.part.name)
+            file_name = self.part.get_file_path(PartType.CSG)
 
-    def initialize_part(self) -> Part:
-        """
-        Loads the scad part using OpenSCAD.
-        """
-        try:
-            logger.debug(self.part.scad_file_path)
+            if not os.path.exists(file_name):
+                logger.info("generating csg file")
+                self.part.create_csg()
+            if not os.path.exists(file_name):
+                raise FileNotFoundError(file_name)
 
-            # Import the .scad file
-            importCSG.insert(self.part.scad_file_path, self.document_name)
-            
-            # # Import the CSG file
-            # shape = Part.read(self.part.scad_file_path)
-            # 
-            # # Add the shape to the document
-            # part = self.document.addObject("Part::Feature", "Shape")
-            # part.Shape = shape
-        
+            # open the csg file
+            document = importCSG.open(file_name)
+
             # Recompute the document to apply changes
-            self.document.recompute() 
-            
-            return part
+            document.recompute()
+            logger.info(self.part.name)
+            return document
         except Exception as e:
             logger.error(e)
-            raise Exception("failed to initialize part")
-        finally:
-            logger.info(self.part.scad_file_path)
+            raise Exception("failed to open document")
 
-    def export_step(self, part_type: PartType):
+    def export_step(self):
         """
         Exports the scad file using OpenSCAD.
         """
         try:
-            logger.debug(part_type)
+            file_name = self.part.get_file_path(PartType.STEP)
+            logger.debug(file_name)
 
-            Part.export([self.part], self.part.step_file_path)
+            objects =self.document.Objects
+
+            parts = list(filter(lambda o: not o.InList , objects))
+
+            Part.export(parts, file_name)
+
+            logger.info(file_name)
         except Exception as e:
             logger.error(e)
-        finally:
-            logger.info(self.part_type)
 
     
