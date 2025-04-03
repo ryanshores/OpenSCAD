@@ -28,8 +28,10 @@ height_raise=30;
 
 // tank-mountain-waterfall
 tube_d = 7;
+tube_d_outlet = 3;
 left_hole_h = 78;
 right_hole_h = 64;
 scale=[0.5, 5];
-outlet_h=100;
+outlet_h=40;
+outlet_l=20;
 angle = 120;

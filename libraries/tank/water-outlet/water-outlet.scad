@@ -1,6 +1,10 @@
 include <tank/shared.scad>
 
-module water_outlet(tube_d=tube_d, angle=angle, scale=scale, outlet_l=20) {
+module water_outlet(
+tube_d=tube_d,
+angle=angle,
+scale=scale,
+outlet_l=outlet_l) {
 
     rot = angle-90;
 
@@ -13,9 +17,9 @@ module water_outlet(tube_d=tube_d, angle=angle, scale=scale, outlet_l=20) {
                             circle(r = tube_d / 2);
 
                     rotate([90,00,00])
-                    translate([tube_d, 0, 0])
-                        linear_extrude(height = outlet_l, scale=scale)
-                                    circle(r = tube_d / 2);
+                        translate([tube_d, 0, 0])
+                            linear_extrude(height = outlet_l, scale=scale)
+                                        circle(r = tube_d / 2);
         }
 }
 
