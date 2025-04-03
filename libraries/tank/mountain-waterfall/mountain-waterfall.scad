@@ -73,10 +73,10 @@ module peak_of_apollos_whisper(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     hole_translate_z =27.8;
     hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
 
-    outlet_height = 90;
-    outlet_length = 10;
-    outlet_rotate = 85;
-    angle = 130;
+    outlet_height = 83;
+    outlet_length = 13;
+    outlet_rotate = 90;
+    angle = 128;
 
     full_outlet_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height, outlet_length=outlet_length, outlet_rotate=outlet_rotate, angle=angle);
 }
@@ -110,9 +110,9 @@ module tank_mountain_waterfall(tube_d=tube_d) {
 
 walls();
 
-peak_of_apollos_whisper();
+//peak_of_apollos_whisper();
 //nyx_and_hemeras_divide();
-//rainbow_summit_falls();
+rainbow_summit_falls();
 
 %tank_mountain_waterfall();
 
