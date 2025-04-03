@@ -4,9 +4,6 @@ use <tank/mountain-waterfall/original.scad>
 use <tank/water-pipe/water-pipe.scad>
 use <tank/water-outlet/water-outlet.scad>
 
-//Mount Eros’ Embrace
-//Zephyr’s Kiss Ridge
-
 module pipe_positioned(hole_translate_dims = [0,0,0], tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height = outlet_height) {
     hole_z = outlet_height - hole_translate_dims[2];
 
@@ -47,21 +44,23 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     right_outlet_rotate = -85;
     right_outleft_angle = 130;
 
-    // left outlet
-    translate(left_outlet_translate)
-        rotate(left_outlet_rotate)
-            linear_extrude(height = left_outlet_length, scale=scale)
-                circle(r = tube_d_outlet / 2);
+    union() {
+        // left outlet
+        translate(left_outlet_translate)
+            rotate(left_outlet_rotate)
+                linear_extrude(height = left_outlet_length, scale=scale)
+                    circle(r = tube_d_outlet / 2);
 
-    // right outlet
-    full_outlet_positioned(
-        hole_translate_dims=hole_translate_dims,
-        tube_d = tube_d,
-        tube_d_outlet = tube_d_outlet,
-        outlet_height=right_outlet_height,
-        outlet_length=right_outlet_length,
-        outlet_rotate=right_outlet_rotate,
-        angle=right_outleft_angle);
+        // right outlet
+        full_outlet_positioned(
+            hole_translate_dims=hole_translate_dims,
+            tube_d = tube_d,
+            tube_d_outlet = tube_d_outlet,
+            outlet_height=right_outlet_height,
+            outlet_length=right_outlet_length,
+            outlet_rotate=right_outlet_rotate,
+            angle=right_outleft_angle);
+    }
 }
 
 //	Peak of Apollo’s Whisper
@@ -89,8 +88,6 @@ module rainbow_summit_falls(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
     outlet_height = 60;
 
-    pipe_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height);
-
     // left outlet
     outlet_translate_x = 91.5;
     outlet_translate_y = 36;
@@ -101,10 +98,14 @@ module rainbow_summit_falls(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     outlet_rotate_z = 5;
     outlet_rotation = [0,outlet_rotate_y,outlet_rotate_z];
 
-    translate(outlet_translate)
-        rotate(outlet_rotation)
-            linear_extrude(height = outlet_length, scale=scale)
-                circle(r = tube_d_outlet / 2);
+    union() {
+        pipe_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height);
+
+        translate(outlet_translate)
+            rotate(outlet_rotation)
+                linear_extrude(height = outlet_length, scale=scale)
+                    circle(r = tube_d_outlet / 2);
+    }
 }
 
 module tank_mountain_waterfall(tube_d=tube_d) {
@@ -118,11 +119,11 @@ module tank_mountain_waterfall(tube_d=tube_d) {
     }
 }
 
-walls();
+%walls();
 
-//peak_of_apollos_whisper();
-//nyx_and_hemeras_divide();
-//rainbow_summit_falls();
+%peak_of_apollos_whisper();
+%nyx_and_hemeras_divide();
+%rainbow_summit_falls();
 
 tank_mountain_waterfall();
 
