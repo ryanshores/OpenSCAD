@@ -42,7 +42,7 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     left_outlef_angle_z = 10;
     left_outlet_rotate = [0,left_outlet_angle_y,left_outlef_angle_z];
 
-    right_outlet_height = 75;
+    right_outlet_height = 70;
     right_outlet_length = 17;
     right_outlet_rotate = -85;
     right_outleft_angle = 130;
