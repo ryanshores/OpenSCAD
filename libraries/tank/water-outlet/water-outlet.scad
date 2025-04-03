@@ -1,6 +1,6 @@
 include <tank/shared.scad>
 
-module outlet(tube_d=tube_d, angle=angle, scale=scale) {
+module water_outlet(tube_d=tube_d, angle=angle, scale=scale) {
 
     rot = angle-90;
 
@@ -19,17 +19,4 @@ module outlet(tube_d=tube_d, angle=angle, scale=scale) {
         }
 }
 
-module pipe(outlet_h=outlet_h, tube_d=tube_d) {
-    cylinder(h=outlet_h, d=tube_d);
-}
-
-module water_pipe(outlet_h=outlet_h, tube_d=tube_d, angle=angle, scale=scale) {
-
-    union() {
-        pipe(outlet_h, tube_d);
-        translate([0, 0, outlet_h])
-            outlet(tube_d, angle, scale);
-    }
-}
-
-water_pipe();
+water_outlet();
