@@ -81,26 +81,23 @@ module peak_of_apollos_whisper(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
 //	Rainbow Summit Falls
 module rainbow_summit_falls(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
 
-    hole_translate_x = 96.4;
-    hole_translate_y = 37.1;
+    hole_translate_x = 95.8;
+    hole_translate_y = 36;
     hole_translate_z =37.3;
     hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
-
-    outlet_height = 70;
-    outlet_length = 10;
-    outlet_rotate = 85;
-    angle = 130;
+    outlet_height = 60;
 
     pipe_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height);
 
     // left outlet
-    outlet_translate_x = hole_translate_x - 5;
-    outlet_translate_y = hole_translate_y - 1;
-    outlet_translate_z = outlet_height - 4;
+    outlet_translate_x = 91.5;
+    outlet_translate_y = 36;
+    outlet_translate_z = 66;
     outlet_translate = [outlet_translate_x,outlet_translate_y, outlet_translate_z];
     outlet_length = 7;
-    outlet_rotate = -110;
-    outlet_rotation = [0,outlet_rotate,5];
+    outlet_rotate_y = -110;
+    outlet_rotate_z = 5;
+    outlet_rotation = [0,outlet_rotate_y,outlet_rotate_z];
 
     translate(outlet_translate)
         rotate(outlet_rotation)
@@ -125,5 +122,5 @@ walls();
 //nyx_and_hemeras_divide();
 //rainbow_summit_falls();
 
-%tank_mountain_waterfall();
+!tank_mountain_waterfall();
 
