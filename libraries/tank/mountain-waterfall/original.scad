@@ -18,3 +18,13 @@ module waterfall(distance_inner=distance_inner) {
         }
     }
 }
+
+module waterfall_centered() {
+    // Create a waterfall using the imported STL file
+    translate_z = 98 / 2;
+    translate([0,0, translate_z])
+        rotate([0, 0, 270])
+            import("original.stl", convexity = 3, center = true);
+}
+
+waterfall_centered();

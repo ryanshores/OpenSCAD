@@ -4,7 +4,7 @@ module water_outlet(
 tube_d=tube_d,
 angle=angle,
 scale=scale,
-outlet_l=outlet_l) {
+outlet_length=outlet_length) {
 
     rot = angle-90;
 
@@ -18,7 +18,7 @@ outlet_l=outlet_l) {
 
                     rotate([90,00,00])
                         translate([tube_d, 0, 0])
-                            linear_extrude(height = outlet_l, scale=scale)
+                            linear_extrude(height = outlet_length, scale=scale)
                                         circle(r = tube_d / 2);
         }
 }
