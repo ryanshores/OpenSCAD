@@ -28,20 +28,22 @@ module full_outlet_positioned(hole_translate_dims = [0,0,0], tube_d = tube_d, tu
 module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
 
     hole_translate_x = -29.3;
-    hole_translate_y = 30.7;
+    hole_translate_y = 29.5;
     hole_translate_z =27.8;
     hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
 
     left_outlet_length = 15;
+    left_outlet_translate_x = -36;
+    left_outlet_translate_y = 29.4;
     left_outlet_translate_z = 80;
-    left_outlet_translate = [hole_translate_x-6, hole_translate_y-1, left_outlet_translate_z];
+    left_outlet_translate = [left_outlet_translate_x, left_outlet_translate_y, left_outlet_translate_z];
     left_outlet_rotate_z = 100;
-    left_outlet_angle_y = -130;
-    left_outlef_angle_z = 20;
+    left_outlet_angle_y = -140;
+    left_outlef_angle_z = 10;
     left_outlet_rotate = [0,left_outlet_angle_y,left_outlef_angle_z];
 
     right_outlet_height = 75;
-    right_outlet_length = 16;
+    right_outlet_length = 17;
     right_outlet_rotate = -85;
     right_outleft_angle = 130;
 
@@ -122,5 +124,5 @@ walls();
 //nyx_and_hemeras_divide();
 //rainbow_summit_falls();
 
-!tank_mountain_waterfall();
+tank_mountain_waterfall();
 
