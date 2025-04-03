@@ -45,24 +45,21 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     right_outlet_rotate = -85;
     right_outleft_angle = 130;
 
-    union() {
-        // left outlet
-        translate(left_outlet_translate)
-            rotate(left_outlet_rotate)
-                linear_extrude(height = left_outlet_length, scale=scale)
-                    circle(r = tube_d_outlet / 2);
-//                water_outlet(tube_d=tube_d_outlet, angle=left_outlet_angle, outlet_length=outlet_length);
+    // left outlet
+    translate(left_outlet_translate)
+        rotate(left_outlet_rotate)
+            linear_extrude(height = left_outlet_length, scale=scale)
+                circle(r = tube_d_outlet / 2);
 
-        // right outlet
-        full_outlet_positioned(
-            hole_translate_dims=hole_translate_dims,
-            tube_d = tube_d,
-            tube_d_outlet = tube_d_outlet,
-            outlet_height=right_outlet_height,
-            outlet_length=right_outlet_length,
-            outlet_rotate=right_outlet_rotate,
-            angle=right_outleft_angle);
-    }
+    // right outlet
+    full_outlet_positioned(
+        hole_translate_dims=hole_translate_dims,
+        tube_d = tube_d,
+        tube_d_outlet = tube_d_outlet,
+        outlet_height=right_outlet_height,
+        outlet_length=right_outlet_length,
+        outlet_rotate=right_outlet_rotate,
+        angle=right_outleft_angle);
 }
 
 //	Peak of Apollo’s Whisper
@@ -95,6 +92,20 @@ module rainbow_summit_falls(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     angle = 130;
 
     pipe_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height);
+
+    // left outlet
+    outlet_translate_x = hole_translate_x - 5;
+    outlet_translate_y = hole_translate_y - 1;
+    outlet_translate_z = outlet_height - 4;
+    outlet_translate = [outlet_translate_x,outlet_translate_y, outlet_translate_z];
+    outlet_length = 7;
+    outlet_rotate = -110;
+    outlet_rotation = [0,outlet_rotate,5];
+
+    translate(outlet_translate)
+        rotate(outlet_rotation)
+            linear_extrude(height = outlet_length, scale=scale)
+                circle(r = tube_d_outlet / 2);
 }
 
 module tank_mountain_waterfall(tube_d=tube_d) {
@@ -112,7 +123,7 @@ walls();
 
 //peak_of_apollos_whisper();
 //nyx_and_hemeras_divide();
-rainbow_summit_falls();
+//rainbow_summit_falls();
 
 %tank_mountain_waterfall();
 
