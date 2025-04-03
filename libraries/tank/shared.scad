@@ -25,3 +25,11 @@ light_cord_diameter=5;
 
 // tank-light-holder-sitting
 height_raise=30;
+
+// tank-mountain-waterfall
+tube_d = 7;
+left_hole_h = 78;
+right_hole_h = 64;
+scale=[0.5, 5];
+outlet_h=100;
+angle = 120;
