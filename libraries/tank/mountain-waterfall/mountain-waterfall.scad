@@ -21,6 +21,22 @@ module full_outlet_positioned(hole_translate_dims = [0,0,0], tube_d = tube_d, tu
     }
 }
 
+//	Peak of Apollo’s Whisper
+module peak_of_apollos_whisper(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
+
+    hole_translate_x = -82;
+    hole_translate_y = 35;
+    hole_translate_z =27.8;
+    hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
+
+    outlet_height = 83;
+    outlet_length = 13;
+    outlet_rotate = 90;
+    angle = 128;
+
+    full_outlet_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height, outlet_length=outlet_length, outlet_rotate=outlet_rotate, angle=angle);
+}
+
 // Nyx and Hemera’s Divide
 module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
 
@@ -40,9 +56,19 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     left_outlet_rotate = [0,left_outlet_angle_y,left_outlef_angle_z];
 
     right_outlet_height = 70;
-    right_outlet_length = 17;
+    right_outlet_length = 25;
     right_outlet_rotate = -85;
-    right_outleft_angle = 130;
+    right_outleft_angle = 128;
+
+    connection_length = 11.1;
+    connection_translate_x = -36;
+    connection_translate_y = 29.4;
+    connection_translate_z = 80;
+    connection_translate = [connection_translate_x, connection_translate_y, connection_translate_z];
+    connection_rotate_x = 0;
+    connection_rotate_y = 140;
+    connection_rotate_z = 0;
+    connection_rotate = [connection_rotate_x,connection_rotate_y,connection_rotate_z];
 
     union() {
         // left outlet
@@ -50,6 +76,11 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
             rotate(left_outlet_rotate)
                 linear_extrude(height = left_outlet_length, scale=scale)
                     circle(r = tube_d_outlet / 2);
+
+        // connection
+        translate(connection_translate)
+            rotate(connection_rotate)
+                cylinder(h = connection_length, r = tube_d_outlet / 2);
 
         // right outlet
         full_outlet_positioned(
@@ -61,22 +92,6 @@ module nyx_and_hemeras_divide(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
             outlet_rotate=right_outlet_rotate,
             angle=right_outleft_angle);
     }
-}
-
-//	Peak of Apollo’s Whisper
-module peak_of_apollos_whisper(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
-
-    hole_translate_x = -82;
-    hole_translate_y = 35;
-    hole_translate_z =27.8;
-    hole_translate_dims = [hole_translate_x, hole_translate_y, hole_translate_z];
-
-    outlet_height = 83;
-    outlet_length = 13;
-    outlet_rotate = 90;
-    angle = 128;
-
-    full_outlet_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height, outlet_length=outlet_length, outlet_rotate=outlet_rotate, angle=angle);
 }
 
 //	Rainbow Summit Falls
@@ -98,13 +113,30 @@ module rainbow_summit_falls(tube_d=tube_d, tube_d_outlet=tube_d_outlet) {
     outlet_rotate_z = 5;
     outlet_rotation = [0,outlet_rotate_y,outlet_rotate_z];
 
+    connection_length = 9.6;
+    connection_translate_x = hole_translate_x + 0.3;
+    connection_translate_y = hole_translate_y;
+    connection_translate_z = outlet_height - 1;
+    connection_translate = [connection_translate_x, connection_translate_y, connection_translate_z];
+    connection_rotate_x = 0;
+    connection_rotate_y = -40.5;
+    connection_rotate_z = 0;
+    connection_rotate = [connection_rotate_x,connection_rotate_y,connection_rotate_z];
+
     union() {
+        // pipe
         pipe_positioned(hole_translate_dims=hole_translate_dims, tube_d = tube_d, tube_d_outlet = tube_d_outlet, outlet_height=outlet_height);
 
+        // connection
+        translate(connection_translate)
+            rotate(connection_rotate)
+                cylinder(h = connection_length, r = tube_d_outlet / 2);
+
+        // outlet
         translate(outlet_translate)
-            rotate(outlet_rotation)
-                linear_extrude(height = outlet_length, scale=scale)
-                    circle(r = tube_d_outlet / 2);
+                rotate(outlet_rotation)
+                    linear_extrude(height = outlet_length, scale=scale)
+                        circle(r = tube_d_outlet / 2);
     }
 }
 
@@ -121,9 +153,9 @@ module tank_mountain_waterfall(tube_d=tube_d) {
 
 %walls();
 
-%peak_of_apollos_whisper();
-%nyx_and_hemeras_divide();
-%rainbow_summit_falls();
+peak_of_apollos_whisper();
+nyx_and_hemeras_divide();
+rainbow_summit_falls();
 
-tank_mountain_waterfall();
+!tank_mountain_waterfall();
 
