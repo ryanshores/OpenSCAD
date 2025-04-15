@@ -1,7 +1,12 @@
 include <ecoflow-delta-3-plus/shared.scad>
 use <ecoflow-delta-3-plus/ecoflow-delta-3-plus.scad>
 
-battery_dims = [75, 430, 90];
+// Dimensions: 16.9” (L) x 2.9” (H) x 3.5” (W)
+// 25.4mm = 1 inch
+// 16.9 * 25.4 = 429.26
+// 2.9 * 25.4 = 73.66
+// 3.5 * 25.4 = 88.9
+battery_dims = [74, 430, 89];
 charger_dims = [170 + 40, 75, 45];
 wall_thickness = 15;
 gap = 5;
