@@ -16,7 +16,7 @@ chamfer = 5;
 
 module battery_box(battery_dims = battery_dims, wall_thickness = wall_thickness) {
     battery_clearance_dims = [
-        battery_dims.x + gap * 3,
+        battery_dims.x + gap * 2,
         battery_dims.y,
         battery_dims.z + gap * 2
     ];
@@ -48,7 +48,7 @@ module battery_box(battery_dims = battery_dims, wall_thickness = wall_thickness)
 
 module battery_box_v2(battery_dims = battery_dims, wall_thickness = wall_thickness) {
     battery_clearance_dims = [
-        battery_dims.x + gap * 3,
+        battery_dims.x + gap * 2,
         battery_dims.y,
         battery_dims.z + gap * 2
     ];
