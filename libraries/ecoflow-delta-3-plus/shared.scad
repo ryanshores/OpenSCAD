@@ -17,10 +17,15 @@ ecoflow_box_y = 352; // laser measured
 ecoflow_box_z = 279; // laser measured
 ecoflow_dims = [ecoflow_box_x, ecoflow_box_y, ecoflow_box_z];
 
-ecoflox_feet_x = 30; // guess, not important
-ecoflow_feet_y = 315; // laser measured
+// foot
+// 165 x
+// 35 y
+// feet
+// 315 y
+ecoflox_feet_x = 165; // ruler
+ecoflow_feet_y = 35; // laser measured
 ecoflow_feet_z = 283.6 - ecoflow_dims.z; // 4.6 mm;
 ecoflow_feet = [ecoflox_feet_x, ecoflow_feet_y, ecoflow_feet_z];
-
+ecoflow_feet_translate_y = 315 / 2; // laser measured 315
 ecoflow_handles_y = 398; // from ecoflow
 

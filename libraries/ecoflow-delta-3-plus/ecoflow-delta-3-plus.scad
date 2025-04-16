@@ -10,7 +10,7 @@ dc_x = 140/500 * ecoflow_stated_dims.x; // 56.8 mm
 dc_z = 166/714 * ecoflow_stated_dims.z; // 65.1 mm
 dc_dims = [dc_x, 10, dc_z]; // y dim is for representation only
 
-feet_translate = [ecoflow_dims.x / 2 - ecoflow_feet.x, 0, - ecoflow_feet.z / 2 - ecoflow_dims.z / 2];
+feet_translate = [0, - ecoflow_feet_translate_y + ecoflow_feet.y / 2, - ecoflow_feet.z / 2 - ecoflow_dims.z / 2];
 
 module ecoflow_delta_3_plus() {
     union() {
@@ -21,10 +21,10 @@ module ecoflow_delta_3_plus() {
             cuboid(dc_dims, fillet = 5);
 
         // feet
-        translate(feet_translate) // right
+        translate(feet_translate) // front
             cuboid(ecoflow_feet, chamfer = 1);
 
-        translate([-feet_translate.x, feet_translate.y, feet_translate.z]) // left
+        translate([feet_translate.x, -feet_translate.y, feet_translate.z]) // back
             cuboid(ecoflow_feet, chamfer = 1);
     }
 }
