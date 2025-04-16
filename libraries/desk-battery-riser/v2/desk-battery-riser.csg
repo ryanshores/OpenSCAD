@@ -1,0 +1,193 @@
+group() {
+	difference() {
+		group() {
+			group() {
+				group() {
+					group() {
+						group() {
+							group() {
+								group() {
+									group() {
+										group() {
+											group() {
+												multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -54.5], [0, 0, 0, 1]]) {
+													group() {
+														hull() {
+															linear_extrude(height = 0.001, center = false, convexity = 2, scale = [1, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+																offset(r = 5, $fn = 0, $fa = 5, $fs = 0.1) {
+																	square(size = [173, 166], center = true);
+																}
+															}
+															group() {
+																multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 108.99], [0, 0, 0, 1]]) {
+																	group() {
+																		multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+																			linear_extrude(height = 0.001, center = false, convexity = 2, scale = [1, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+																				offset(r = 5, $fn = 0, $fa = 5, $fs = 0.1) {
+																					square(size = [173, 305], center = true);
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		multmatrix([[1, 0, 0, -44.5], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+			group() {
+				group() {
+					group() {
+						group() {
+							group();
+						}
+					}
+					multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+						group() {
+							group() {
+								hull() {
+									cube(size = [84, 420, 89], center = true);
+									cube(size = [74, 430, 89], center = true);
+									cube(size = [74, 420, 99], center = true);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		multmatrix([[1, 0, 0, 44.5], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+			group() {
+				group() {
+					group() {
+						group() {
+							group();
+						}
+					}
+					multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+						group() {
+							group() {
+								hull() {
+									cube(size = [84, 420, 89], center = true);
+									cube(size = [74, 430, 89], center = true);
+									cube(size = [74, 420, 99], center = true);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 195.5], [0, 0, 0, 1]]) {
+%	group() {
+		union() {
+			group() {
+				group() {
+					group() {
+						group() {
+							group();
+						}
+					}
+					multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+						group() {
+							group() {
+								hull() {
+									cube(size = [202, 322, 249], center = true);
+									cube(size = [172, 352, 249], center = true);
+									cube(size = [172, 322, 279], center = true);
+								}
+							}
+						}
+					}
+				}
+			}
+			multmatrix([[1, 0, 0, 0], [0, 1, 0, 176], [0, 0, 1, -90.0165], [0, 0, 0, 1]]) {
+				group() {
+					group() {
+						group() {
+							group() {
+								group();
+							}
+						}
+						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+							group() {
+								group() {
+									group() {
+										minkowski(convexity = 0) {
+											cube(size = [46.56, 0.001, 55.935], center = true);
+											group() {
+												rotate_extrude(angle = 360, convexity = 2, $fn = 72, $fa = 5, $fs = 0.1) {
+													polygon(points = [[0, -5.00476], [0.436194, -4.98572], [0.869068, -4.92873], [1.29533, -4.83423], [1.71173, -4.70294], [2.1151, -4.53586], [2.50238, -4.33425], [2.87061, -4.09966], [3.217, -3.83387], [3.5389, -3.5389], [3.83387, -3.217], [4.09966, -2.87061], [4.33425, -2.50238], [4.53586, -2.1151], [4.70294, -1.71173], [4.83423, -1.29533], [4.92873, -0.869068], [4.98572, -0.436194], [5.00476, 0], [4.98572, 0.436194], [4.92873, 0.869068], [4.83423, 1.29533], [4.70294, 1.71173], [4.53586, 2.1151], [4.33425, 2.50238], [4.09966, 2.87061], [3.83387, 3.217], [3.5389, 3.5389], [3.217, 3.83387], [2.87061, 4.09966], [2.50238, 4.33425], [2.1151, 4.53586], [1.71173, 4.70294], [1.29533, 4.83423], [0.869068, 4.92873], [0.436194, 4.98572], [0, 5.00476]], paths = undef, convexity = 1);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			multmatrix([[1, 0, 0, 71], [0, 1, 0, 0], [0, 0, 1, -141.8], [0, 0, 0, 1]]) {
+				group() {
+					group() {
+						group() {
+							group() {
+								group();
+							}
+						}
+						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+							group() {
+								group() {
+									hull() {
+										cube(size = [30, 313, 2.6], center = true);
+										cube(size = [28, 315, 2.6], center = true);
+										cube(size = [28, 313, 4.6], center = true);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			multmatrix([[1, 0, 0, -71], [0, 1, 0, 0], [0, 0, 1, -141.8], [0, 0, 0, 1]]) {
+				group() {
+					group() {
+						group() {
+							group() {
+								group();
+							}
+						}
+						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+							group() {
+								group() {
+									hull() {
+										cube(size = [30, 313, 2.6], center = true);
+										cube(size = [28, 315, 2.6], center = true);
+										cube(size = [28, 313, 4.6], center = true);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -54.5], [0, 0, 0, 1]]) {
+%	cylinder($fn = 0, $fa = 5, $fs = 0.1, h = 354, r1 = 5, r2 = 5, center = false);
+}
+
