@@ -3,7 +3,7 @@ include <ecoflow-delta-3-plus/shared.scad>
 // Approx. x 202 z 283.6 mm
 // x 500 × z 714 pixels
 dc_z_bottom = 113/714 * ecoflow_stated_dims.z; // 53.5 mm
-dc_translate = [0, ecoflow_dims.y / 2, dc_z - ecoflow_dims.z / 2 + ecoflow_feet.z];
+dc_translate = [0, ecoflow_dims.y / 2, dc_z_bottom - ecoflow_dims.z / 2 + ecoflow_feet.z];
 
 // 140 166
 dc_x = 140/500 * ecoflow_stated_dims.x; // 56.8 mm
