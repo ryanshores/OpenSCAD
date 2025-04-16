@@ -6,10 +6,10 @@ use <ecoflow-delta-3-plus/ecoflow-delta-3-plus.scad>
 // 16.9 * 25.4 = 429.26
 // 2.9 * 25.4 = 73.66
 // 3.5 * 25.4 = 88.9
-battery_dims = [74, 430, 89];
+battery_dims = [73.66, 429.26, 88.9];
 charger_dims = [170 + 40, 75, 45];
 wall_thickness = 5;
-gap = 5;
+gap = 2.5;
 chamfer = 5;
 
 // h to beat 354
@@ -27,10 +27,10 @@ module battery_box(battery_dims = battery_dims, wall_thickness = wall_thickness)
         battery_clearance_dims.z + wall_thickness * 2
     ];
 
-    battery_translate_x = box_dims.x / 2 - battery_clearance_dims.x / 2- wall_thickness;
+    battery_translate_x = box_dims.x / 2 - battery_clearance_dims.x / 2- wall_thickness * 1.2;
+    battery_translate_z = - wall_thickness * 0.2;
 
     difference() {
-//        cuboid(box_dims, chamfer = chamfer);
         rounded_prismoid(
             size1=[box_dims.x,ecoflow_dims.y / 2],
             size2=[box_dims.x,box_dims.y],
@@ -38,13 +38,56 @@ module battery_box(battery_dims = battery_dims, wall_thickness = wall_thickness)
             r=chamfer,
             center=true);
 
-        translate([-battery_translate_x, 0,0])
+        translate([-battery_translate_x, 0,battery_translate_z])
             cuboid(battery_clearance_dims, chamfer = chamfer);
 
-        translate([battery_translate_x, 0,0])
+        translate([battery_translate_x, 0,battery_translate_z])
+            cuboid(battery_clearance_dims, chamfer = chamfer);
+    }
+}
+
+module battery_box_v2(battery_dims = battery_dims, wall_thickness = wall_thickness) {
+    battery_clearance_dims = [
+        battery_dims.x + gap * 2,
+        battery_dims.y,
+        battery_dims.z + gap * 2
+    ];
+
+    box_dims = [
+        battery_clearance_dims.x * 2 + wall_thickness * 3,
+        ecoflow_feet_y,
+        battery_clearance_dims.z + wall_thickness * 2
+    ];
+
+    battery_translate_x = box_dims.x / 2 - battery_clearance_dims.x / 2- wall_thickness * 1.2;
+    battery_translate_z = - wall_thickness * 0.2;
+
+    teardrop_r = 30;
+    teardrop_translate_y = teardrop_r + (box_dims.z / 2 - teardrop_r) - 5;
+    teardrop_rotate_y = 45;
+    teardrop_rotate_z = 90;
+
+    difference() {
+        rounded_prismoid(
+            size1=[box_dims.x,ecoflow_dims.y / 2],
+            size2=[box_dims.x,box_dims.y],
+            h=box_dims.z,
+            r=chamfer,
+            center=true);
+
+        translate([-battery_translate_x, 0,battery_translate_z])
             cuboid(battery_clearance_dims, chamfer = chamfer);
 
-//        #chamfer_mask_x(l=80, chamfer=20);
+        translate([battery_translate_x, 0,battery_translate_z])
+            cuboid(battery_clearance_dims, chamfer = chamfer);
+
+        translate([0,teardrop_translate_y,0])
+            rotate([0,-teardrop_rotate_y, teardrop_rotate_z])
+                teardrop(r=teardrop_r, h=box_dims.y, ang=teardrop_rotate_y);
+
+        translate([0,-teardrop_translate_y,0])
+            rotate([0,teardrop_rotate_y, teardrop_rotate_z])
+                teardrop(r=teardrop_r, h=box_dims.y, ang=teardrop_rotate_y);
     }
 }
 
@@ -73,7 +116,7 @@ module charger_box(charger_dims = charger_dims, wall_thickness = wall_thickness)
     }
 }
 
-battery_box();
+battery_box_v2();
 
 translate([0, 0, ecoflow_dims.z /2 + battery_dims.x - 15])
 %   ecoflow_delta_3_plus();
