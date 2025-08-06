@@ -7,8 +7,8 @@ radius = 10;
 length = 10;
 scale = [1, 2];
 
-module cone(height = height, scale=scale) {
-    linear_extrude(height = height, scale=scale)
+module cone(outlet_length=outlet_length, scale=scale) {
+    linear_extrude(height = outlet_length, scale=scale)
         circle(r = tube_d / 2);
 }
 
@@ -34,7 +34,7 @@ outlet_length=outlet_length) {
 
                     rotate([90,00,00])
                         translate([tube_d, 0, -0.0001])
-                            cone(height = outlet_length, scale=scale);
+                            cone(outlet_length = outlet_length, scale=scale);
                 }
 }
 
