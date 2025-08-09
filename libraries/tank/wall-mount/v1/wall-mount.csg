@@ -1,0 +1,40 @@
+group() {
+	color([0, 0, 1, 1]) {
+		union() {
+			group() {
+				group() {
+					multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+						group() {
+							group() {
+								cube(size = [15, 40, 2], center = true);
+							}
+						}
+					}
+				}
+			}
+			multmatrix([[1, 0, 0, 0], [0, 1, 0, 2.5], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+				group() {
+					group() {
+						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -5], [0, 0, 0, 1]]) {
+							group() {
+								cube(size = [15, 2, 10], center = true);
+							}
+						}
+					}
+				}
+			}
+			multmatrix([[1, 0, 0, 0], [0, 1, 0, -2.5], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+				group() {
+					group() {
+						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -5], [0, 0, 0, 1]]) {
+							group() {
+								cube(size = [15, 2, 10], center = true);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
