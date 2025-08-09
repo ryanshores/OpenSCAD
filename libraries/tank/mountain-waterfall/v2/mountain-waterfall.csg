@@ -1,0 +1,249 @@
+group() {
+	difference() {
+		group() {
+			multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 49], [0, 0, 0, 1]]) {
+				multmatrix([[0, 1, 0, 0], [-1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+					import(file = "../../../../OpenSCAD/libraries/tank/mountain-waterfall/original.stl", layer = "", origin = [0, 0], scale = 1, convexity = 10, $fn = 0, $fa = 5, $fs = 0.1, timestamp = 1743635361);
+				}
+			}
+		}
+		group() {
+			group() {
+				multmatrix([[1, 0, 0, -82], [0, 1, 0, 35], [0, 0, 1, 27.8], [0, 0, 0, 1]]) {
+					multmatrix([[0, -1, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+						group() {
+							union() {
+								group() {
+									group() {
+										group() {
+											group() {
+												group() {
+													group() {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 27.6], [0, 0, 0, 1]]) {
+																							group() {
+																								group() {
+																									group() {
+																										group() {
+																											group() {
+																												cylinder($fn = 72, $fa = 5, $fs = 0.1, h = 55.2, r1 = 3.5, r2 = 1.5, center = true);
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 55.2], [0, 0, 0, 1]]) {
+									group() {
+										multmatrix([[1, 0, 0, 0], [0, 1, 0, 3], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+											multmatrix([[1, 0, 0, 0], [0, 0.788011, 0.615661, 0], [0, -0.615661, 0.788011, 0], [0, 0, 0, 1]]) {
+												multmatrix([[0, 0, 1, 0], [0, -1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1]]) {
+													union() {
+														group() {
+															rotate_extrude(angle = 128, convexity = 2, $fn = 0, $fa = 5, $fs = 0.1) {
+																multmatrix([[1, 0, 0, 3], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+																	circle($fn = 0, $fa = 5, $fs = 0.1, r = 1.5);
+																}
+															}
+														}
+														multmatrix([[1, 0, 0, 0], [0, 0, -1, 0], [0, 1, 0, 0], [0, 0, 0, 1]]) {
+															multmatrix([[1, 0, 0, 3], [0, 1, 0, 0], [0, 0, 1, -0.0001], [0, 0, 0, 1]]) {
+																group() {
+																	linear_extrude(height = 13, center = false, convexity = 1, scale = [2, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+																		circle($fn = 0, $fa = 5, $fs = 0.1, r = 3.5);
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		group() {
+			union() {
+				multmatrix([[1, 0, 0, -36], [0, 1, 0, 29.4], [0, 0, 1, 80], [0, 0, 0, 1]]) {
+					multmatrix([[-0.754407, -0.173648, -0.633022, 0], [-0.133022, 0.984808, -0.111619, 0], [0.642788, 0, -0.766044, 0], [0, 0, 0, 1]]) {
+						linear_extrude(height = 15, center = false, convexity = 1, scale = [2, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+							circle($fn = 0, $fa = 5, $fs = 0.1, r = 1.5);
+						}
+					}
+				}
+				multmatrix([[1, 0, 0, -36], [0, 1, 0, 29.4], [0, 0, 1, 80], [0, 0, 0, 1]]) {
+					multmatrix([[-0.766044, 0, 0.642788, 0], [0, 1, 0, 0], [-0.642788, 0, -0.766044, 0], [0, 0, 0, 1]]) {
+						cylinder($fn = 0, $fa = 5, $fs = 0.1, h = 11.1, r1 = 1.5, r2 = 1.5, center = false);
+					}
+				}
+				group() {
+					multmatrix([[1, 0, 0, -29.3], [0, 1, 0, 29.5], [0, 0, 1, 27.8], [0, 0, 0, 1]]) {
+						multmatrix([[0.0871557, 0.996195, 0, 0], [-0.996195, 0.0871557, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+							group() {
+								union() {
+									group() {
+										group() {
+											group() {
+												group() {
+													group() {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						group() {
+																							multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 21.1], [0, 0, 0, 1]]) {
+																								group() {
+																									group() {
+																										group() {
+																											group() {
+																												group() {
+																													cylinder($fn = 72, $fa = 5, $fs = 0.1, h = 42.2, r1 = 3.5, r2 = 1.5, center = true);
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 42.2], [0, 0, 0, 1]]) {
+										group() {
+											multmatrix([[1, 0, 0, 0], [0, 1, 0, 3], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+												multmatrix([[1, 0, 0, 0], [0, 0.788011, 0.615661, 0], [0, -0.615661, 0.788011, 0], [0, 0, 0, 1]]) {
+													multmatrix([[0, 0, 1, 0], [0, -1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1]]) {
+														union() {
+															group() {
+																rotate_extrude(angle = 128, convexity = 2, $fn = 0, $fa = 5, $fs = 0.1) {
+																	multmatrix([[1, 0, 0, 3], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+																		circle($fn = 0, $fa = 5, $fs = 0.1, r = 1.5);
+																	}
+																}
+															}
+															multmatrix([[1, 0, 0, 0], [0, 0, -1, 0], [0, 1, 0, 0], [0, 0, 0, 1]]) {
+																multmatrix([[1, 0, 0, 3], [0, 1, 0, 0], [0, 0, 1, -0.0001], [0, 0, 0, 1]]) {
+																	group() {
+																		linear_extrude(height = 25, center = false, convexity = 1, scale = [2, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+																			circle($fn = 0, $fa = 5, $fs = 0.1, r = 3.5);
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		group() {
+			union() {
+				group() {
+					multmatrix([[1, 0, 0, 95.8], [0, 1, 0, 36], [0, 0, 1, 37.3], [0, 0, 0, 1]]) {
+						group() {
+							group() {
+								group() {
+									group() {
+										group() {
+											group() {
+												group() {
+													group() {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 11.35], [0, 0, 0, 1]]) {
+																					group() {
+																						group() {
+																							group() {
+																								group() {
+																									group() {
+																										cylinder($fn = 72, $fa = 5, $fs = 0.1, h = 22.7, r1 = 3.5, r2 = 1.5, center = true);
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				multmatrix([[1, 0, 0, 96.1], [0, 1, 0, 36], [0, 0, 1, 59], [0, 0, 0, 1]]) {
+					multmatrix([[0.760406, 0, -0.649448, 0], [0, 1, 0, 0], [0.649448, 0, 0.760406, 0], [0, 0, 0, 1]]) {
+						cylinder($fn = 0, $fa = 5, $fs = 0.1, h = 9.6, r1 = 1.5, r2 = 1.5, center = false);
+					}
+				}
+				multmatrix([[1, 0, 0, 91.5], [0, 1, 0, 36], [0, 0, 1, 66], [0, 0, 0, 1]]) {
+					multmatrix([[-0.340719, -0.0871557, -0.936117, 0], [-0.029809, 0.996195, -0.0818996, 0], [0.939693, 0, -0.34202, 0], [0, 0, 0, 1]]) {
+						linear_extrude(height = 7, center = false, convexity = 1, scale = [2, 1], $fn = 0, $fa = 5, $fs = 0.1) {
+							circle($fn = 0, $fa = 5, $fs = 0.1, r = 1.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

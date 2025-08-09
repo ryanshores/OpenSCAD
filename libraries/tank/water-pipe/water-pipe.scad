@@ -22,4 +22,18 @@ outlet_length=outlet_length) {
     }
 }
 
+module water_pipe_v2(
+outlet_height=outlet_height,
+tube_d=tube_d,
+tube_d_outlet=tube_d_outlet,
+angle=angle,
+scale=scale,
+outlet_length=outlet_length) {
+    union() {
+        pipe(outlet_height, tube_d, tube_d_outlet);
+        translate([0, 0, outlet_height])
+            water_outlet_v2(tube_d=tube_d_outlet, curve_scale=5, curve_growth=2.5, height=outlet_length, scale=scale, outlet_length=outlet_length);
+    }
+}
+
 water_pipe();

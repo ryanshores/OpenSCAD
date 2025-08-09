@@ -16,6 +16,9 @@ distance_outer = 247;
 distance = (distance_inner + distance_outer) / 2;
 walls_dims = [distance, wall_y, wall_z];
 
+//// back wall_dims
+back_wall_y = 3;
+
 // light
 light_x = 205;
 light_y = 30;

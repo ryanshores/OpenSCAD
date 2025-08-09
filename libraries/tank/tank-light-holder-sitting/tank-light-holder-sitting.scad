@@ -1,6 +1,8 @@
 include <tank/shared.scad>
 use <tank/walls/walls.scad>
 use <tank/light/light.scad>
+use <shapes/exponential.scad>
+
 
 color = "green";
 
@@ -41,6 +43,7 @@ module tank_light_holder_sitting(
     light_attachment_translate_x = 0;
     light_attachment_translate_y = 0;
     light_attachment_translate_z = wall_dims[2] + height_raise + part_thickness;
+//    29/13
 
     difference(){
         union() {
@@ -50,7 +53,11 @@ module tank_light_holder_sitting(
 
             // right wall attachment
             translate([attachment_translate_x, attachment_translate_y, attachment_translate_z])
-                cuboid([attachment_x, attachment_y, attachment_z]);
+                difference() {
+                    cuboid([attachment_x, attachment_y, attachment_z]);
+                    translate([part_thickness, 0, 0])
+                        cuboid([light_cord_diameter, light_cord_diameter, attachment_z + part_thickness]);
+                }
 
             // light attachment
             translate([light_attachment_translate_x, light_attachment_translate_y, light_attachment_translate_z])
@@ -62,6 +69,8 @@ module tank_light_holder_sitting(
     }
 
 }
+
+
 
 !tank_light_holder_sitting();
 light_walls(height_raise, wall_dims, walls_dims, light_dims);
