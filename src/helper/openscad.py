@@ -1,8 +1,8 @@
 import subprocess
 
-from model import Part
-from model.PartType import PartType
-from utility import logs
+from src.models import Part
+from src.models.PartType import PartType
+from src.utility import logs
 
 # Configure logging
 logger = logs.Logger(__name__)

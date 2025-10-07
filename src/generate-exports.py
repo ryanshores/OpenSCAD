@@ -3,8 +3,8 @@
 import argparse
 import os
 
-from model.Part import Part
-from utility import logs
+from src.models.Part import Part
+from src.utility import logs
 
 logger = logs.Logger(__name__)
 

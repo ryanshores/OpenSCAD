@@ -1,4 +1,4 @@
-from utility import LOG_LEVEL
+from src.utility import LOG_LEVEL
 import logging
 
 class Logger(logging.Logger):

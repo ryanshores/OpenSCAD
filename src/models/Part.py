@@ -2,10 +2,10 @@ import glob
 import os
 import re
 
-from model.PartType import PartType
-from utility.logs import Logger
-from helper import openscad
-from helper.freecad import freecad
+from src.models.PartType import PartType
+from src.utility.logs import Logger
+from src.helper import openscad
+from src.helper.freecad import freecad
 
 logger = Logger(__name__)
 

@@ -1,11 +1,10 @@
 import os
-import FreeCAD # do not remove
 import Part
 import importCSG  # OpenSCAD import module in FreeCAD
 
-from model import Part as PartModel
-from model.PartType import PartType
-from utility import logs
+from src.models import Part as PartModel
+from src.models.PartType import PartType
+from src.utility import logs
 
 logger = logs.Logger(__name__)
 
